@@ -1,0 +1,1 @@
+admin content inside admin folder, main page for restaurant is index.php, all tables data in restaurant.sql
