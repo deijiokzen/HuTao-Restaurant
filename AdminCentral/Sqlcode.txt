@@ -1,0 +1,22 @@
+create table Employee(Employee_ID varchar(20),First_Name varchar(30),Last_Name varchar(30),Gender VARCHAR(10),Salary FLOAT,City varchar(30),primary key(Employee_ID));
+
+create table Admin(Admin_ID varchar(20),Admin_Password varchar(20),Employee_ID varchar(20),primary key(Admin_ID), foreign key(Employee_ID) REFERENCES Employee(Employee_ID));
+
+create table Delivery_Boy(DBoyID varchar(20),Employee_ID varchar(20), primary key(DBoyID), foreign key (Employee_ID) references Employee(Employee_ID));
+
+create table Manager(Manager_ID varchar(20),Employee_ID varchar(20), primary key(Manager_ID), foreign key (Employee_ID) references Employee(Employee_ID));
+
+create table Chef(Chef_ID varchar(20),Employee_ID varchar(20), primary key(Chef_ID), foreign key (Employee_ID) references Employee(Employee_ID));
+
+
+create or replace view Show_Delivery_Boy as
+    select * from Delivery_Boy natural join employee;
+
+create or replace view show_chef as
+    select * from chef natural join employee;
+
+create or replace view show_manager as
+    select * from manager natural join employee;
+
+create or replace view Show_Admin as
+    select * from admin natural join employee;
